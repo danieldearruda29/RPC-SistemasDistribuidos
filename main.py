@@ -1,20 +1,35 @@
 import rpyc
+import time
+
 
 class MyService(rpyc.Service):
     def on_connect(self, conn):
-        print("Cliente conectado")
+        # código que é executado quando uma conexão é iniciada, caso seja necessário
+        pass
 
     def on_disconnect(self, conn):
-        print("Cliente desconectado")
+        # código que é executado quando uma conexão é finalizada, caso seja necessário
+        pass
 
-    def exposed_get_answer(self):
+    def exposed_get_answer(self):  # este é um método exposto
         return 42
 
-    exposed_the_real_answer_though = 43
+    exposed_the_real_answer_though = 43  # este é um atributo exposto
 
-    def get_question(self):
+    def get_question(self):  # este método não é exposto
         return "Qual é a cor do cavalo branco de Napoleão?"
 
+    # soma vetor do cliente
+    def exposed_sum_vector(self, vetor):
+        start = time.time()
+        num = sum(vetor)
+        end = time.time()
+        print("Tempo Server:", end - start)
+
+        return num
+
+
+# Para iniciar o servidor
 if __name__ == "__main__":
     from rpyc.utils.server import ThreadedServer
 
