@@ -12,7 +12,11 @@ class MyService(rpyc.Service):
     exposed_the_real_answer_though = 43 # este é um atributo exposto
     def get_question(self): # este método não é exposto
         return "Qual é a cor do cavalo branco de Napoleão?"
-    
+
+    #soma vetor do cliente
+    def exposed_sum_vector(self, vetor):
+        return sum(vetor)
+
 #Para iniciar o servidor
 if __name__ == "__main__":
     from rpyc.utils.server import ThreadedServer
