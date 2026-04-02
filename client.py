@@ -3,7 +3,7 @@ import sys
 import time
 
 if len(sys.argv) < 2:
-    exit("Usage {} SERVER".format(sys.argv[0]))
+    exit("Usage {} IP_DO_SERVIDOR".format(sys.argv[0]))
 
 server = sys.argv[1]
 conn = rpyc.connect(server,18861)
