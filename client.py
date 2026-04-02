@@ -1,5 +1,6 @@
 import rpyc
 import sys
+import time
 
 if len(sys.argv) < 2:
     exit("Usage {} SERVER".format(sys.argv[0]))
@@ -16,5 +17,9 @@ vetor = list(range(n))
 #mostra vetor criado aleatoriamente
 print("Vetor criado: ", vetor)
 
-# imprime o resultado
+# mede o tempo de receber de volta a soma do vetor utilizando o método do servidor
+start = time.time()
 print(conn.root.sum_vector(vetor))
+
+end = time.time()
+print("Tempo Client:", end-start)

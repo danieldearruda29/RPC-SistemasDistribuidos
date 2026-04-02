@@ -1,5 +1,5 @@
 import rpyc
-
+import time
 class MyService(rpyc.Service):
     def on_connect(self, conn):
     # código que é executado quando uma conexão é iniciada, caso seja necessário
@@ -15,7 +15,12 @@ class MyService(rpyc.Service):
 
     #soma vetor do cliente
     def exposed_sum_vector(self, vetor):
-        return sum(vetor)
+        start = time.time()
+        num = sum(vetor)
+        end = time.time()
+        print("Tempo Server:", end - start)
+
+        return num
 
 #Para iniciar o servidor
 if __name__ == "__main__":
