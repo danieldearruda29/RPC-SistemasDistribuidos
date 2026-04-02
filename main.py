@@ -21,9 +21,9 @@ class MyService(rpyc.Service):
 
     # soma vetor do cliente
     def exposed_sum_vector(self, vetor):
-        start = time.time()
+        start = time.perf_counter()
         num = sum(vetor)
-        end = time.time()
+        end = time.perf_counter()
         print("Tempo Server:", end - start)
 
         return num
